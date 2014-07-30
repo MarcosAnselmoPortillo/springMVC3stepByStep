@@ -6,6 +6,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.Exception;
 
+import static org.junit.Assert.*;
+
 public class HelloControllerTests{
 
     @Test
