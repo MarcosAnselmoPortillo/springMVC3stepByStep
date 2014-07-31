@@ -15,6 +15,9 @@ public class HelloControllerTests{
     public void testHandleRequestView() throws Exception{
         HelloController helloController = new HelloController();
         ModelAndView modelAndView = helloController.handleRequest(null,null);
-        assertEquals("hello.jsp",modelAndView.getViewName());
+        assertEquals("WEB-INF/vistas/hello.jsp",modelAndView.getViewName());
+        assertNotNull(modelAndView.getModel());
+        String nowValue = (String) modelAndView.getModel().get("now");
+        assertNotNull(nowValue);
     }
 }

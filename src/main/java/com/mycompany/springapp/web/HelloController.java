@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 @Controller
 public class HelloController{
@@ -19,8 +20,10 @@ public class HelloController{
     @RequestMapping(value = "/hello.htm")
     public ModelAndView handleRequest (HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
-        logger.info("Returning hello view");
 
-        return new ModelAndView("hello.jsp");
+        String now = (new Date()).toString();
+        logger.info("Returning hello view with "+now);
+
+        return new ModelAndView("WEB-INF/vistas/hello.jsp","now",now);
     }
 }
