@@ -17,7 +17,15 @@ public class SimpleProductManager implements ProductManager {
         return productos;
     }
 
-    public void incrementarPrecio(int porcentaje){ throw new UnsupportedOperationException();}
+    public void incrementarPrecio(int porcentaje){
+        if (productos != null){
+            for(Producto producto : productos){
+                double newPrice = producto.getPrecio().doubleValue()*(100+ porcentaje)/100;
+                producto.setPrecio(newPrice);
+            }
+        }
+    }
+
 
     public void setProductos(List<Producto> productos){
         this.productos=productos;

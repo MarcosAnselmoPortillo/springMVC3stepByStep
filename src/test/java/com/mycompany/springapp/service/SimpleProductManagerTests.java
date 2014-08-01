@@ -25,6 +25,8 @@ public class SimpleProductManagerTests {
     private static Double PRECIO_MESA = new Double(150.10);
     private static String DESC_MESA = "Mesa";
 
+    private static int INCREMENTO_PRECIO=10;
+
     @Before
     public void setUp() throws Exception{
         productManager = new SimpleProductManager();
@@ -42,6 +44,7 @@ public class SimpleProductManagerTests {
         productos.add(producto);
 
         productManager.setProductos(productos);
+
     }
 
     @Test
@@ -63,5 +66,42 @@ public class SimpleProductManagerTests {
         producto = productos.get(1);
         assertEquals(DESC_MESA,producto.getDescripcion());
         assertEquals(PRECIO_MESA,producto.getPrecio());
+    }
+
+    @Test
+    public void testIncrementoPrecioWithNullListOfProducts(){
+        try {
+            productManager = new SimpleProductManager();
+            productManager.incrementarPrecio(INCREMENTO_PRECIO);
+        }
+        catch (Exception e){
+            fail("La Lista de productos es null");
+        }
+    }
+
+    @Test
+    public void testIncrementoPrecioWithEmptyListOfProducts(){
+        try {
+            productManager = new SimpleProductManager();
+            productManager.setProductos(new ArrayList<Producto>());
+            productManager.incrementarPrecio(INCREMENTO_PRECIO);
+        }
+        catch (Exception e){
+            fail("La Lista de productos esta vacía");
+        }
+    }
+
+    @Test
+    public void testIncrementoPrecioWithPositivePercentage(){
+        productManager.incrementarPrecio(INCREMENTO_PRECIO);
+        double precioDeSillaEsperadoConIncremento = 22.55;
+        double precioDeMesaEsperadoConIncremento = 165.11;
+
+        List<Producto> productos = productManager.getProductos();
+        Producto producto = productos.get(0);
+        assertEquals(precioDeSillaEsperadoConIncremento,producto.getPrecio(),0);
+
+        producto = productos.get(1);
+        assertEquals(precioDeMesaEsperadoConIncremento,producto.getPrecio(),0);
     }
 }
