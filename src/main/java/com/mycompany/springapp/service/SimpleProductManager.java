@@ -15,9 +15,7 @@ public class SimpleProductManager implements ProductManager {
         throw new UnsupportedOperationException();
     }
 
-    public void incrementarPrecio(int porcentaje){
-        throw new UnsupportedOperationException();
-    }
+    public void incrementarPrecio(int porcentaje){ throw new UnsupportedOperationException();}
 
     public void setProductos(List<Producto> productos){
         throw new UnsupportedOperationException();
