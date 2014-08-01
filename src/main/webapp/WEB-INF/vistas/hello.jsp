@@ -8,5 +8,8 @@
         <c:forEach items="${modelo.productos}" var="prod">
             <c:out value="${prod.descripcion}"/> <i>$<c:out value="${prod.precio}"/></i><br><br>
         </c:forEach>
+        <br>
+        <a href="<c:url value="incrementoprecio.htm"/>">Incrementar Precios</a>
+        </br>
     </body>
 </html>
