@@ -18,6 +18,7 @@ public class InventoryControllerTests {
         ModelAndView modelAndView = inventoryController.handleRequest(null,null);
         assertEquals("hello",modelAndView.getViewName());
         assertNotNull(modelAndView.getModel());
+        @SuppressWarnings("unchecked")
         Map<String,Object>modelMap=(Map<String,Object>) modelAndView.getModel().get("modelo");
         String nowValue = (String) modelMap.get("now");
         assertNotNull(nowValue);
