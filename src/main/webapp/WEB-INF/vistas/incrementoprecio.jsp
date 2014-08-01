@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/views/include.jsp" %>
+<%@ include file="/WEB-INF/vistas/include.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -15,10 +15,10 @@
     <tr>
       <td align="right" width="20%">Increase (%):</td>
         <td width="20%">
-          <form:input path="percentage"/>
+          <form:input path="porcentaje"/>
         </td>
         <td width="60%">
-          <form:errors path="percentage" cssClass="error"/>
+          <form:errors path="porcentaje" cssClass="error"/>
         </td>
     </tr>
   </table>
