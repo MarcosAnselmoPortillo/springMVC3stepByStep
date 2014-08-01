@@ -11,13 +11,15 @@ public class SimpleProductManager implements ProductManager {
 
     private static final long serialVersionUID=1L;
 
+    private List<Producto> productos;
+
     public List<Producto> getProductos(){
-        throw new UnsupportedOperationException();
+        return productos;
     }
 
     public void incrementarPrecio(int porcentaje){ throw new UnsupportedOperationException();}
 
     public void setProductos(List<Producto> productos){
-        throw new UnsupportedOperationException();
+        this.productos=productos;
     }
 }

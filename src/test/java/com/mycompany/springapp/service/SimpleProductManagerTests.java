@@ -32,11 +32,12 @@ public class SimpleProductManagerTests {
 
         //stub up una lista de productos
         Producto producto = new Producto();
+        producto.setDescripcion("Silla");
         producto.setPrecio(PRECIO_SILLA);
-        producto.setDescripcion(DESC_SILLA);
         productos.add(producto);
 
-        producto.setDescripcion(DESC_MESA);
+        producto = new Producto();
+        producto.setDescripcion("Mesa");
         producto.setPrecio(PRECIO_MESA);
         productos.add(producto);
 
