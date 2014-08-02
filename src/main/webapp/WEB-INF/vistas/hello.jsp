@@ -1,8 +1,15 @@
 <%@ include file="/WEB-INF/vistas/include.jsp" %>
 <html>
-    <head><title>Hello :: Spring Application</title></head>
+    <head><title><fmt:message key="title"/></title></head>
     <body>
-        <h1>Hello - Spring Application</h1>
-        <p>Saludos, it is now <c:out value="${now}"/></p>
+        <h1><fmt:message key="heading"/></h1>
+        <p><fmt:message key="greeting"/> <c:out value="${modelo.now}"/></p>
+        <h3>Productos</h3>
+        <c:forEach items="${modelo.productos}" var="prod">
+            <c:out value="${prod.descripcion}"/> <i>$<c:out value="${prod.precio}"/></i><br><br>
+        </c:forEach>
+        <br>
+        <a href="<c:url value="incrementoprecio.htm"/>">Incrementar Precios</a>
+        </br>
     </body>
 </html>
