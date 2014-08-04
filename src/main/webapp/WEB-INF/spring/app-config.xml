@@ -11,31 +11,6 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <bean id="producManager" class="com.mycompany.springapp.service.SimpleProductManager">
-        <property name="productos">
-            <list>
-                <ref bean="producto1"/>
-                <ref bean="producto2"/>
-                <ref bean="producto3"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="producto1" class="com.mycompany.springapp.domain.Producto">
-        <property name="descripcion" value="Lampara"/>
-        <property name="precio" value="5.75"/>
-    </bean>
-
-    <bean id="producto2" class="com.mycompany.springapp.domain.Producto">
-        <property name="descripcion" value="Mesa"/>
-        <property name="precio" value="75.25"/>
-    </bean>
-
-    <bean id="producto3" class="com.mycompany.springapp.domain.Producto">
-        <property name="descripcion" value="Silla"/>
-        <property name="precio" value="22.79"/>
-    </bean>
-
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>

@@ -1,6 +1,8 @@
 package com.mycompany.springapp.service;
 
 import com.mycompany.springapp.domain.Producto;
+import com.mycompany.springapp.repository.ProductoDao;
+import com.mycompany.springapp.repository.ProductoDaoEnMemoria;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,13 +45,16 @@ public class SimpleProductManagerTests {
         producto.setPrecio(PRECIO_MESA);
         productos.add(producto);
 
-        productManager.setProductos(productos);
+        //productManager.setProductos(productos);
+        ProductoDao productoDao = new ProductoDaoEnMemoria(productos);
+        productManager.setProductoDao(productoDao);
 
     }
 
     @Test
     public void testProductsWhitNoProducts(){
         productManager = new SimpleProductManager();
+        productManager.setProductoDao(new ProductoDaoEnMemoria(null));
         assertNull(productManager.getProductos());
     }
 
@@ -72,6 +77,7 @@ public class SimpleProductManagerTests {
     public void testIncrementoPrecioWithNullListOfProducts(){
         try {
             productManager = new SimpleProductManager();
+            productManager.setProductoDao(new ProductoDaoEnMemoria(null));
             productManager.incrementarPrecio(INCREMENTO_PRECIO);
         }
         catch (Exception e){
@@ -83,7 +89,8 @@ public class SimpleProductManagerTests {
     public void testIncrementoPrecioWithEmptyListOfProducts(){
         try {
             productManager = new SimpleProductManager();
-            productManager.setProductos(new ArrayList<Producto>());
+            //productManager.setProductos(new ArrayList<Producto>());
+            productManager.setProductoDao(new ProductoDaoEnMemoria((new ArrayList<Producto>())));
             productManager.incrementarPrecio(INCREMENTO_PRECIO);
         }
         catch (Exception e){
