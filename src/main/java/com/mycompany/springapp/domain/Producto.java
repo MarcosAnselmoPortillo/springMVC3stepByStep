@@ -1,14 +1,23 @@
 package com.mycompany.springapp.domain;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Created by developer on 7/31/14.
  */
+@Entity
+@Table(name = "productos")
 public class Producto implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
+
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String descripcion;
     private Double precio;
 
@@ -36,6 +45,8 @@ public class Producto implements Serializable{
         return buffer.toString();
     }
 
+    public Integer getId() { return id; }
 
+    public void setId(Integer id) { this.id = id; }
 
 }
